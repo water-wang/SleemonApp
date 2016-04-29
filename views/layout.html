@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Soofruit</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel='stylesheet' type="text/css" href='/common.css'>
+    <link rel='stylesheet' type="text/css" href='/mobile.css'>
+</head>
+<body ng-app="app">
+
+<div ng-view></div>
+
+<nav id="nav" class="navbg">
+    <ul>
+        <li class="on">
+            <a href="#/post">
+                <div class="home_nav"></div>
+                <p>资讯</p>
+            </a>
+        </li>
+        <li class="">
+            <a href="#/task">
+                <div class="classify_nav"></div>
+                <p>任务</p>
+            </a>
+        </li>
+        <li>
+            <a href="#/training">
+                <div class="classify_nav"></div>
+                <p>培训</p>
+            </a>
+        </li>
+        <li>
+            <a href="#/user">
+                <div class="user_nav"></div>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<script type="text/javascript" src='../public/scripts/angular.js'></script>
+<script type="text/javascript" src='../public/scripts/angular-route.js'></script>
+<script type="text/javascript" src='views/routes.js'></script>
+
+
+</body>
+</html>
