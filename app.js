@@ -21,12 +21,11 @@ require('colors');
  */
 var app = express();
 var logger = utils.logger;
-var staticDir = path.join(__dirname, 'public');
 
 /**
  * view engine
  */
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', './assets/views');
 app.set('view engine', 'html');
 app.engine('html', require('ejs-mate'));
 app.locals._layoutFile = 'layout.html';
@@ -34,7 +33,7 @@ app.locals._layoutFile = 'layout.html';
 /**
  * middlewares
  */
-app.use('/public', express.static(staticDir));
+app.use('/public', express.static('assets'));
 
 app.use(middlewares.httplog);
 app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
@@ -49,7 +48,7 @@ app.use(function (err, req, res, next) {
 });
 
 app.get('/', function (req, res) {
-    res.render(app.get('views') + '/layout.html');
+    res.render('layout.html');
 });
 
 /**
