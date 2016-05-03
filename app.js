@@ -33,7 +33,7 @@ app.locals._layoutFile = 'layout.html';
 /**
  * middlewares
  */
-app.use('/public', express.static('assets'));
+app.use(express.static('assets'));
 
 app.use(middlewares.httplog);
 app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));

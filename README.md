@@ -3,7 +3,7 @@ Sleemon training app frontend
 
 Execution flow example:
 
-Start -> localhost:3003/ -> layout.html -> #/user -> views/user/user.js -> http(/user?wechatId=xxx) -> controller/user.info -> proxy/user.js -> WEBAPI -> views/user/index.html -> End
+Start -> localhost:3003/ -> layout.html -> #/user -> views/user/user.js -> http(/user?wechatId=xxx) -> controller/user.info -> WEBAPI -> views/user/index.html -> End
 
 1. start.
 2. type http://localhost:3003/ in web broswer.
@@ -18,5 +18,7 @@ Start -> localhost:3003/ -> layout.html -> #/user -> views/user/user.js -> http(
 11. end. 
 
 To do list:
-1. solve routes.js src issue on views/layout.html
-2. gulp config
+1. wechat corp api.
+
+Known bug:
+1. http get for user execute twice.

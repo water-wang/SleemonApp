@@ -4,19 +4,19 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when('/post', {
             controller : 'Post',
-            templateUrl : 'post/post.html'
+            templateUrl : 'views/post.html'
         })
         .when('/task', {
             controller : 'Task',
-            templateUrl : 'task/task.html'
+            templateUrl : 'views/task.html'
         })
         .when('/training', {
             controller : 'Training',
-            templateUrl : 'training/training.html'
+            templateUrl : 'views/training.html'
         })
          .when('/user', {
             controller : 'User',
-            templateUrl : 'user/user.html'
+            templateUrl : 'views/user.html'
         })
         .otherwise({
             redirectTo : '/user'
