@@ -4,6 +4,7 @@
 var utils = require('./utils');
 var config = require('./config');
 var routers = require('./router');
+var wechat_routers = require('./wechat/router');
 var middlewares = require('./middlewares');
 
 /**
@@ -42,6 +43,7 @@ app.use(cookieParser(config.SECRET_SESSION));
 app.use(compress());
 app.use(utils.session);
 app.use('/', routers);
+app.use('/wechat', wechat_routers);
 app.use(function (err, req, res, next) {
     logger.error(err);
     return res.status(500).send('500 Internal error.');

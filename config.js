@@ -28,9 +28,7 @@ config = {
         
         corpId : 'wx95163ad0c138c4ab',
         
-        corpSecret : 'hYmhdtwH7vnsYxbRAD1yR7o0eON3RxOTLosSL1i2PdDJQeZgWEe4Cy7y33T59llJ',
-        
-        QIYE_URI : 'https://qyapi.weixin.qq.com/cgi-bin'
+        corpSecret : 'hYmhdtwH7vnsYxbRAD1yR7o0eON3RxOTLosSL1i2PdDJQeZgWEe4Cy7y33T59llJ'
     }
 }
 
