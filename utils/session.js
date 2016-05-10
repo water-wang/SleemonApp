@@ -4,7 +4,8 @@ var redisClient = require('./redisdb').redisClient;
 var config = require('../config');
 
 module.exports = session({
-    store: new redisStore({ host: 'localhost', port: 6379, client: redisClient }),
+    ////TODO: there is a bug when using redisStore. 
+    //store: new redisStore({ host: 'localhost', port: 6379, client: redisClient }),
     secret: config.SECRET_SESSION,
     resave: false,
     saveUninitialized: false

@@ -1,5 +1,6 @@
 module.exports = {
-    logger : require('./logger'),    
-    redisdb : require('./redisdb'),    
-    session : require('./session')
+    logger: require('./logger'),
+    client: require('./client'), 
+    redisdb: require('./redisdb'),    
+    session: require('./session')
 }

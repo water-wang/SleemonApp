@@ -1,23 +1,48 @@
-var urllib = require('urllib');
+var utils = require('../utils');
 var config = require('../config');
+var wechat = require('../wechat');
 
-module.exports.info = function (req, res) {
-    var wechatid = req.params.wechatid;
-    
-    // Call Webapi to get user info of Sleemon app.
-    var options = {
-        method: 'GET',
-        data: {
-            wechatid: wechatid
-        }
-    };
-    
-    urllib.request(config.WEBAPI_URI + '/user', options, function (err, data, resp) {
-        if (err) {
-            res.end(err);
-        }
-        res.end('success');
-    });
-    
-    res.end('success :' + wechatid);
-}
+var client = utils.client;
+
+module.exports.userinfo = function (req, res) {
+    if (req.session && req.session.user) {
+        return res.json({ code: 0, data: req.session.user });
+    }
+      
+    if (!req.query.code) {
+        var redirectUri = req.protocol + '://' + req.get('host') + req.originalUrl;
+        var url = wechat.user.getAuthorizeURL('http://wq6zmhmcmz.proxy.qqbrowser.cc/user');
+        res.redirect(url);
+    } else {
+        var user = {};
+        // call wechat api to get user info.
+        wechat.user.getUserByCode(req.query.code, function (err, data) {
+            if (err) {
+                return res.json({ code: 1, errmsg: err });
+            }
+            for (var prop in data) {
+                if (data.hasOwnProperty(prop)) {
+                    user[prop] = data[prop];                    
+                }
+            }            
+            if (user.userid) {
+                // Call Webapi to get user info of Sleemon app.
+                var options = { data: { userid: user.userid }};    
+                client('/user', options, function (err, data) {
+                    if (err) {
+                        ////TODO: webapi call.
+                        //return res.json({ code: 1, errmsg: err });
+                    }
+                    for (var prop in data) {
+                        user[prop] = data[prop];                    
+                    }
+                                   
+                    req.session.user = user;                    
+                    res.json({ code: 0, data: user });
+                });
+            } else {
+                return res.json({ code: 1, errmsg: 'userid is missing.' });
+            }
+        });
+    }
+};

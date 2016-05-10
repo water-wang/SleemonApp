@@ -18,7 +18,4 @@ app.config(function ($routeProvider) {
             controller : 'User',
             templateUrl : 'views/user.html'
         })
-        .otherwise({
-            redirectTo : '/user'
-        });
 });
